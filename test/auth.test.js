@@ -18,8 +18,24 @@ describe('Auth API', () => {
     const res = await request(app)
       .post('/auth/register')
       .send({ username: 'user2', password: 'senha123' });
-    expect(res.status).to.equal(400);
+    expect(res.status).to.equal(409);
+    expect(res.body).to.have.property('error', 'Usuário já existe');
   });
+// Teste de controller usando sinon
+const sinon = require('sinon');
+const authController = require('../controllers/authController');
+describe('Auth Controller (sinon)', () => {
+  it('deve retornar 201 ao cadastrar novo usuário', async () => {
+    const req = { body: { username: 'sinonUser', password: 'senha123' } };
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub()
+    };
+    await authController.register(req, res);
+    sinon.assert.calledWith(res.status, 201);
+    sinon.assert.calledWith(res.json, sinon.match.has('message', 'Usuário cadastrado com sucesso'));
+  });
+});
 
   it('deve autenticar usuário e retornar token', async () => {
     await request(app)

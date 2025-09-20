@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../../app');
 const { expect } = require('chai');
 
-describe('External - Mensagem para usuário não cadastrado', () => {
+describe('[EXTERNAL] - Mensagem para usuário não cadastrado', () => {
   let token;
   before(async () => {
     await request(app)
