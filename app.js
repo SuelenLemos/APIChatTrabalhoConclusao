@@ -18,7 +18,7 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'API para chat com autenticação e troca de mensagens',
     },
-  servers: [{ url: 'http://localhost:3001' }],
+     servers: [{ url: 'http://localhost:3001' }],
   },
   apis: ['./routes/*.js'],
 };

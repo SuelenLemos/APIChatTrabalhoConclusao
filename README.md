@@ -23,7 +23,7 @@ npm test
 ```
 
 ## Documentação Swagger
-Acesse [http://localhost:3000/docs](http://localhost:3000/docs) após iniciar o servidor.
+Acesse [http://localhost:3001/docs](http://localhost:3001/docs) após iniciar o servidor.
 
 ## Funcionalidades
 - Cadastro e login de usuários
