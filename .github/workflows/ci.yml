@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main, criando-base-api-copilot ]
+    branches: [ main]
   pull_request:
-    branches: [ main, criando-base-api-copilot ]
+    branches: [ main]
 
 jobs:
   build:
