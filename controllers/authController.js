@@ -5,9 +5,13 @@ exports.register = (req, res) => {
   const { username, password } = req.body;
   try {
     const user = userService.registerUser(username, password);
-    res.status(201).json({ username: user.username });
+    res.status(201).json({ message: 'Usuário cadastrado com sucesso', username: user.username });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    if (err.message === 'Usuário já existe') {
+      res.status(409).json({ error: 'Usuário já existe' });
+    } else {
+      res.status(400).json({ error: err.message });
+    }
   }
 };
 
@@ -16,8 +20,8 @@ exports.login = (req, res) => {
   try {
     const user = userService.authenticateUser(username, password);
     const token = jwt.sign({ username: user.username }, 'secret', { expiresIn: '1h' });
-    res.json({ token });
+    res.status(200).json({ message: 'Login realizado com sucesso', token });
   } catch (err) {
-    res.status(401).json({ error: err.message });
+    res.status(401).json({ error: 'Usuário ou senha inválidos' });
   }
 };
