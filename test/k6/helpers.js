@@ -1,4 +1,4 @@
-import { faker } from 'https://esm.sh/@faker-js/faker@6.6.6';
+import http from 'k6/http';
 
 // Helper: Função para fazer login e retornar token
 // Usa Faker para gerar dados fictícios se necessário, mas aqui para login usa dados passados
@@ -15,15 +15,15 @@ export function login(baseUrl, username, password) {
 // Helper: Gerar dados fictícios para usuários
 export function generateUserData() {
   return {
-    username: faker.internet.userName(),
-    password: faker.internet.password()
+    username: 'testuser' + Math.floor(Math.random() * 1000),
+    password: 'password123'
   };
 }
 
 // Helper: Gerar dados fictícios para mensagens
 export function generateMessageData() {
   return {
-    to: faker.internet.userName(), // Simula destinatário
-    content: faker.lorem.sentence()
+    to: 'user1',
+    content: 'Mensagem de teste ' + Math.floor(Math.random() * 1000)
   };
 }
