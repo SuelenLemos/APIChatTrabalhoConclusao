@@ -9,8 +9,8 @@ const baseUrl = __ENV.BASE_URL || 'http://localhost:3001';
 // Thresholds: Limite aceitável para 95% dos usuários (baseado em boas práticas: <500ms para APIs)
 export let options = {
   thresholds: {
-    http_req_duration: ['p(95)<500'], // Thresholds aplicado: 95% das requests devem ser <500ms
-    http_req_failed: ['rate<0.1'], // Menos de 10% de falhas
+    http_req_duration: ['p(95)<300', 'p(99)<500'], // 95% < 300ms e 99% < 500ms
+    http_req_failed: ['rate<0.01'], // Menos de 1% de erros
   },
   // Stages: Ramp up, steady state, ramp down
   stages: [
