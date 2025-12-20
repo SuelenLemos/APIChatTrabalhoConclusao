@@ -40,4 +40,5 @@ Acesse [http://localhost:3001/docs](http://localhost:3001/docs) após iniciar o 
 
 ## CI
 Os testes são executados automaticamente via GitHub Actions a cada push ou pull request.
-teste de commit
+
+Teste commit
